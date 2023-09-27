@@ -14,7 +14,7 @@ public class DisplayWeapon : MonoBehaviour
     private Transform _parentTransform;
     
     // Start is called before the first frame update
-    private void Start()
+    private void Awake()
     {
         sR = GetComponent<SpriteRenderer>();
         _parentTransform = transform.parent;

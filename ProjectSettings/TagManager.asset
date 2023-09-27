@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Damage
   - Target
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3859831305
+    locked: 0
+  - name: Character
+    uniqueID: 299323947
+    locked: 0
+  - name: Canvas
+    uniqueID: 1467199737
     locked: 0

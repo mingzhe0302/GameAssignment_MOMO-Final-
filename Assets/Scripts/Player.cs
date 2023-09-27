@@ -8,10 +8,15 @@ public class Player : BaseCharacterBehaviour
     private bool _flipX;
     private Transform targetTransform;
 
+    protected new void Awake()
+    {
+        base.Awake();
+        targetTransform = GetComponentInChildren<WeaponTarget>().transform;
+    }
+    
     private new void Start()
     {
         base.Start();
-        targetTransform = GetComponentInChildren<WeaponTarget>().transform;
     }
 
     private new void Update()

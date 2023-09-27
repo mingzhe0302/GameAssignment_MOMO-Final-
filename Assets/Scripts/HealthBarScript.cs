@@ -9,7 +9,7 @@ public class HealthBarScript : MonoBehaviour
     
     private Transform _healthBarTransform;
     private Health _parentHealth;
-    void Start()
+    void Awake()
     {
         _healthBarTransform = transform.GetChild(0);
         var i = GetComponentInParent(typeof(IDamageable)) as IDamageable;

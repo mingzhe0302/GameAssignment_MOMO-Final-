@@ -32,22 +32,21 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IDamageable, IBase
 
 
     protected bool _firstRun = true;
+
+    protected virtual void Awake()
+    {
+        characterMovement.rb = GetComponent<Rigidbody2D>();
+        weaponAttack = GetComponent<WeaponAttack>();
+        weaponTarget = GetComponentInChildren<WeaponTarget>();
+        displayedWeapon = GetComponentInChildren<DisplayWeapon>();
+        _characterAnimationEvents = GetComponent<CharacterAnimationEvents>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    
     protected virtual void Start()
     {
-        characterMovement.rb = this.GetComponent<Rigidbody2D>();
-
-        // equipmentList = GetComponent<EquipmentList>();
-        weaponAttack = GetComponent<WeaponAttack>();
-
-        weaponTarget = GetComponentInChildren<WeaponTarget>();
-        
         currentWeapon = equipmentList.getFirstWeapon();
-        displayedWeapon = GetComponentInChildren<DisplayWeapon>();
         displayedWeapon.UpdateWeapon(currentWeapon);
-
-        _characterAnimationEvents = GetComponent<CharacterAnimationEvents>();
-        
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     protected void Update()
@@ -122,7 +121,7 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IDamageable, IBase
             }
             else if (currentWeapon.getWeaponType().Equals("Hitscan")) // || currentWeapon.getWeaponType().Equals("Projectile"))
             {
-                float range = 0.5f;
+                float range = 0.1f;
                 float size = 1;
                 weaponTarget.moveTargetToPos(t, targetPosition, range, size);
             }

@@ -13,7 +13,7 @@ public class CharacterAnimationEvents : MonoBehaviour
     // private static readonly int VelocityX = animator.StringToHash("velocityX");
     // private static readonly int VelocityY = Animator.StringToHash("VelocityY");
 
-    public void Start()
+    public void Awake()
     {
         _parentrb = this.GetComponent<Rigidbody2D>();
     }

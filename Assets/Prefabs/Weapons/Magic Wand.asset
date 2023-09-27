@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Magic Wand
   weaponDesc: 
-  attackrate: 3
+  attackrate: 2
   damage: 0
   weaponAnimationController: {fileID: 9100000, guid: 9a09f7fc913e56f4e83cacecb8cb3f30, type: 2}
   sprite: {fileID: -1558153498, guid: 36c221bad697b054bbefcbb1e39b9500, type: 3}

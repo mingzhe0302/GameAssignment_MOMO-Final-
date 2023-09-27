@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeTime: 2
-  explosionDamage: 30
+  explosionDamage: 10
   explosionSize: 2
   knockBackForce: 0
 --- !u!95 &1189572863166526560

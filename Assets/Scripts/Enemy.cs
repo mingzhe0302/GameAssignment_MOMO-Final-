@@ -20,16 +20,19 @@ public class Enemy : BaseCharacterBehaviour
     public float argoRange;
     public float keptDistance;
     
-    
+    protected new void Awake()
+    {
+        base.Awake();
+        
+        targetTransform = GetComponentInChildren<WeaponTarget>().transform;
+        if (hasAttackAnimation)
+            targetTransform.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
     private new void Start()
     {
         base.Start();
-        
-        targetTransform = GetComponentInChildren<WeaponTarget>().transform;
         _aimmedTransform = aimmedGameObject.transform;
-
-        if (hasAttackAnimation)
-            targetTransform.gameObject.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     new void Update()
@@ -53,14 +56,15 @@ public class Enemy : BaseCharacterBehaviour
             //         _aimmedTransform.position, 
             //         currentWeapon.getRange(), 
             //         currentWeapon.getWeaponType().Equals("Hitbox")? 0: keptDistance));
-            
-            if (enemyAI.attackBool(targetTransform.position, 
-                    _aimmedTransform.position, 
-                    currentWeapon.getWeaponType().Equals("Hitbox")? 2: argoRange,
-                    currentWeapon.getWeaponType().Equals("Hitbox")? 0: keptDistance-0.5f))
+
+            if (enemyAI.attackBool(targetTransform.position,
+                    _aimmedTransform.position,
+                    currentWeapon.getWeaponType().Equals("Hitbox") ? 2 : argoRange,
+                    currentWeapon.getWeaponType().Equals("Hitbox") ? 0 : keptDistance - 0.5f))
+            {
                 attack();
-            
-            
+            }
+
             if (flipWhenRotate)
             {
 //                switch ((- transform.position + _aimmedTransform.position).x)
@@ -90,8 +94,9 @@ public class Enemy : BaseCharacterBehaviour
 
     public override void attack()
     {
-        if(hasAttackAnimation && 
-           weaponAttack.attack(currentWeapon ,targetTransform.position, !hasAttackAnimation))
+        bool successfulAttack = weaponAttack.attack(currentWeapon, targetTransform.position, !hasAttackAnimation);
+
+        if(successfulAttack && hasAttackAnimation)
             _characterAnimationEvents.attack();
         
         if(destoryAfterAttack)

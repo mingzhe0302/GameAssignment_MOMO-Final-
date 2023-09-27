@@ -1,0 +1,14 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LevelManager : MonoBehaviour
+{
+    public void LoadNextLevel()
+    {
+        // ?????????
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+        // ????????????????Build Settings??????????? + 1?
+        SceneManager.LoadScene(currentSceneIndex + 1);
+    }
+}

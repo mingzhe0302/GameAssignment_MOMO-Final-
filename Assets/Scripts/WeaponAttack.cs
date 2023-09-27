@@ -17,7 +17,7 @@ public class WeaponAttack : MonoBehaviour
 
     public GameObject firedProjectile;
 
-    private void Start()
+    private void Awake()
     {
         _weaponAnimationEvents = GetComponentInChildren<WeaponAnimationEvents>();
     }
@@ -67,10 +67,12 @@ public class WeaponAttack : MonoBehaviour
     private void useWeapon(WeaponBaseClass weapon, UnityEngine.Vector3 targetPos)
     {
         string parentTag = GetComponentInParent<Transform>().tag;
-        
-        if(weapon.getWeaponType() == null)
+
+        if (weapon.getWeaponType() == null)
+        {
             return;
-        
+        }
+
         else if (weapon.getWeaponType().Equals("Hitbox"))
         {
             float targetSize = weapon.getSize();
@@ -107,7 +109,6 @@ public class WeaponAttack : MonoBehaviour
                         rc2D.transform.TryGetComponent(out IDamageable hit) &&
                         g.layer == LayerMask.NameToLayer("Damageable"))
                     {
-                        Debug.Log(rc2D.transform.gameObject);
                         hit.damage(weapon.damage);
                     }
                 }
@@ -123,10 +124,21 @@ public class WeaponAttack : MonoBehaviour
             if (proj != null)
             {
                 GameObject firedProj = GameObject.Instantiate(proj);
-                float angle = Vector3.SignedAngle(Vector3.right, direction, new Vector3(0,0,1));
-                firedProj.transform.eulerAngles = new Vector3(0, 0, angle);
-                firedProj.transform.position = targetPos + direction *weapon.getProjectileSpeed();
-                firedProj.GetComponent<Rigidbody2D>().AddForce(direction*weapon.getProjectileSpeed(),ForceMode2D.Impulse);
+
+                if (!firedProj.CompareTag("Enemy"))
+                {
+                    float angle = Vector3.SignedAngle(Vector3.right, direction, new Vector3(0, 0, 1));
+                    firedProj.transform.eulerAngles = new Vector3(0, 0, angle);
+                    firedProj.transform.position = targetPos + direction * weapon.getProjectileSpeed();
+                    firedProj.GetComponent<Rigidbody2D>()
+                        .AddForce(direction * weapon.getProjectileSpeed(), ForceMode2D.Impulse);
+                }
+                else
+                {
+                    firedProj.transform.eulerAngles = new Vector3(0, 0, 0);
+                    firedProj.transform.position = targetPos + direction * weapon.getProjectileSpeed();
+                    firedProj.GetComponent<Enemy>().aimmedGameObject = this.GetComponent<Enemy>().aimmedGameObject;
+                }
             }
         }
 

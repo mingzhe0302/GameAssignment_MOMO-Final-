@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Slime
   weaponDesc: 
-  attackrate: 0.01
+  attackrate: 0.25
   damage: 2
   weaponAnimationController: {fileID: 0}
   sprite: {fileID: 0}
