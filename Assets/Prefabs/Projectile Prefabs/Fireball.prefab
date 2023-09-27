@@ -165,7 +165,7 @@ MonoBehaviour:
   lifeTime: 2
   explosionDamage: 10
   explosionSize: 2
-  knockBackForce: 1
+  knockBackForce: 3
 --- !u!95 &1352920974197159054
 Animator:
   serializedVersion: 5

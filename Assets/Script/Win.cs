@@ -3,21 +3,22 @@ using UnityEngine.UI;
 
 public class Win : MonoBehaviour
 {
-    public GameObject youWinPanel; // ?? "You Win" ??? GameObject
-    public string enemyTag = "Enemy"; // ?????
+    public GameObject youWinPanel; 
+    public string enemyTag = "Enemy"; 
+    public string keyTag = "Key";
 
     private void Start()
     {
-        // ?? "You Win" ??
+     
         youWinPanel.SetActive(false);
     }
 
     private void Update()
     {
-        // ??????????
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        GameObject[] keys = GameObject.FindGameObjectsWithTag(keyTag);
 
-        if (enemies.Length == 0)
+        if (enemies.Length == 0 && keys.Length == 0)
         {
             ShowYouWinPanel();
         }
@@ -25,7 +26,7 @@ public class Win : MonoBehaviour
 
     private void ShowYouWinPanel()
     {
-        // ?? "You Win" ??
+        
         youWinPanel.SetActive(true);
     }
 }

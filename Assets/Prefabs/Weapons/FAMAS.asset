@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: FAMAS
   weaponDesc: 
   attackrate: 0.2
-  damage: 5
+  damage: 10
   weaponAnimationController: {fileID: 9100000, guid: 55cda360029e7e44cba61f16d56e4692, type: 2}
   sprite: {fileID: -121361910, guid: b0d1c306352380d4f847a8a4b95f0851, type: 3}
   weaponType: Hitscan

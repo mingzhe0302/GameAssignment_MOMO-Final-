@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: Minotaur Axe
   weaponDesc: Minotaur Axe
   attackrate: 1
-  damage: 20
+  damage: 5
   weaponAnimationController: {fileID: 0}
   sprite: {fileID: 0}
   weaponType: Hitbox

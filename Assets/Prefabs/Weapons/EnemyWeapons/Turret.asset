@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Turret
   weaponDesc: 
-  attackrate: 3
+  attackrate: 2
   damage: 5
   weaponAnimationController: {fileID: 9100000, guid: d9313761addfa7746bb2c1029e4f1877, type: 2}
   sprite: {fileID: 2098540532, guid: 064e403a048e1de41afe3d2984fa1dbf, type: 3}
