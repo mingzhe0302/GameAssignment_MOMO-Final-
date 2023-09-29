@@ -6,26 +6,25 @@ using TMPro;
 public class SubtitleController : MonoBehaviour
 {
     public TextMeshProUGUI subtitleText;
-    public float displayTime = 3f; // ???????
+    public float displayTime = 3f; 
 
     private void Start()
     {
-        // ??????????
+ 
         subtitleText.gameObject.SetActive(false);
 
-        // ??????????????????
         StartCoroutine(ShowSubtitle());
     }
 
     IEnumerator ShowSubtitle()
     {
-        // ????
+        
         subtitleText.gameObject.SetActive(true);
 
-        // ???????????
+
         yield return new WaitForSeconds(displayTime);
 
-        // ????
+     
         subtitleText.gameObject.SetActive(false);
     }
 }

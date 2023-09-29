@@ -28,6 +28,8 @@ public class Dialogue : MonoBehaviour
 
     public AudioClip typingSoundClip; // AudioClip for storing effect sounds
 
+    public AudioManager audioManager;
+
     public float typingSoundSpeed = 0.06f;  //set default speed as 1.0f
 
     private void Awake()
@@ -93,29 +95,31 @@ public class Dialogue : MonoBehaviour
     IEnumerator Writing()
     {
         string currentDialogue = dialogues[index];
-        //Write the character
+        // Write the character
         dialogueText.text += currentDialogue[charIndex];
-        //Setting the playback speed of the effect sound
-        typingSound.pitch = typingSoundSpeed;
-        // Playing sound effect
-        typingSound.PlayOneShot(typingSoundClip); 
-        //increase the character index
+
+        // Play the typing sound effect through AudioManager
+        audioManager.PlaySFX(typingSoundClip, typingSoundSpeed);
+
+        // increase the character index
         charIndex++;
-        //Make sure you have reached the end of the sentence
-        if(charIndex < currentDialogue.Length)
+
+        // Make sure you have reached the end of the sentence
+        if (charIndex < currentDialogue.Length)
         {
-            //wait x seconds
+            // wait for a short duration
             yield return new WaitForSeconds(writingSpeed);
-            //restart the same process
+
+            // restart the same process
             StartCoroutine(Writing());
         }
         else
         {
-            //End this sentence and wait for the next one
+            // End this sentence and wait for the next one
             waitForNext = true;
         }
-       
     }
+
 
     private void Update()
     {

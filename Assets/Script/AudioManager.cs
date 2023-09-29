@@ -8,8 +8,8 @@ public class AudioManager : MonoBehaviour
 
     [Header("-------- Audio Clip ----------")]
     public AudioClip background;
-    public AudioClip hit;
-    public AudioClip EnemyDeath;
+    public AudioClip wordTyping;
+    
 
     //when game start play bgm
     private void Start()
@@ -18,8 +18,14 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void PlaySFX(AudioClip clip, float typingSoundSpeed)
+    {
+        SFXSource.PlayOneShot(clip);
+    }
+
     public void PlaySFX(AudioClip clip)
     {
         SFXSource.PlayOneShot(clip);
     }
 }
+

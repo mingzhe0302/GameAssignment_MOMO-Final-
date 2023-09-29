@@ -98,6 +98,7 @@ MonoBehaviour:
     waypoints: []
     keepDistanceFromTarget: 1
     returnToOriginalLocationAfterAgro: 0
+  destoryAfterAttack: 0
   argoRange: 9.19
   keptDistance: 2.87
 --- !u!212 &5992785417050395535

@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Audio
   - Key
+  - Coin
+  - Chest
   layers:
   - Default
   - TransparentFX
@@ -48,6 +50,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 3859831305
+    locked: 0
+  - name: Item
+    uniqueID: 225958369
     locked: 0
   - name: Character
     uniqueID: 299323947
